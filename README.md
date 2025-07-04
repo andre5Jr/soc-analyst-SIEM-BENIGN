@@ -28,6 +28,7 @@ This investigation was conducted in the context of a simulated enterprise where 
 Using Windows Event ID 4688, which records every process creation on an endpoint, we tracked indicators of compromise including malicious account creation, scheduled task usage, and payload downloads using system binaries (LOLBINs). The ultimate goal was to extract a malicious flag embedded in the downloaded file and identify the full URL used by the attacker.
 
 Task Breakdown
+
 ✏️ Task 1: Count Logs from March 2022
 ⭕️ Objective: Determine how many logs were ingested from March 2022.
 ⭕️ Method:
@@ -39,6 +40,7 @@ spl
 Copy
 Edit
 index=win_eventlogs EventCode=4688 | stats count
+
 ✏️ Task 2: Identify the Imposter User
 ⭕️ Objective: Detect the suspicious or unknown user account created by the attacker.
 ⭕️ Method:
