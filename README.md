@@ -181,4 +181,33 @@ Correlate Event IDs 4688 with file modification logs (Event ID 4663)
 
 Simulate similar attacks in a lab environment to build detection playbooks
 
+![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T1-1.png)   
+
+![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T1-2.png)   
+
+![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T2-1.png)   
+
+![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T3-1.png)   
+
+![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T3-2.png)   
+
+![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T3-3.png)   
+
+![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T4-1.png)   
+
+![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T5-1.png)   
+
+![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T6-1.png)   
+
+![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T7-1.png)   
+
+![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T8-1.png)   
+
+![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T9-1.png)   
+
+![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T9-2.png)   
+
+![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T10-1.png)  
+
+
 
