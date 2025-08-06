@@ -29,8 +29,9 @@ Using Windows Event ID 4688, which records every process creation on an endpoint
 
 Task Breakdown
 
-✏️ Task 1: Count Logs from March 2022
+✏️ Task 1: How many logs are ingested from the month of March, 2022?
 ⭕️ Objective: Determine how many logs were ingested from March 2022.
+
 ⭕️ Method:
 
 Set time filter in Splunk to March 1–31, 2022.
@@ -41,8 +42,11 @@ Copy
 Edit
 index=win_eventlogs EventCode=4688 | stats count
 
-✏️ Task 2: Identify the Imposter User
+🔱 Answer: 13959
+
+✏️ Task 2: Imposter Alert: There seems to be an imposter account observed in the logs, what is the name of that user?
 ⭕️ Objective: Detect the suspicious or unknown user account created by the attacker.
+
 ⭕️ Method:
 
 spl
@@ -51,8 +55,11 @@ Edit
 index=win_eventlogs EventCode=4688 | stats count by Account_Name
 Compare usernames against known users in each department (HR: Haroon, Chris, Diana). Identify anomalies.
 
-✏️ Task 3: HR User Running Scheduled Tasks
+🔱 Answer: Amel1a
+
+✏️ Task 3: Which user from the HR department was observed to be running scheduled tasks?
 ⭕️ Objective: Determine which HR user executed schtasks.exe.
+
 ⭕️ Method:
 
 spl
@@ -61,8 +68,11 @@ Edit
 index=win_eventlogs CommandLine="*schtasks.exe*"
 Filter for HR usernames (Haroon, Chris, Diana). Look at Account_Name field in the event.
 
-✏️ Task 4: HR User Executing LOLBIN to Download Payload
+🔱 Answer: Chris.fort
+
+✏️ Task 4: Which user from the HR department executed a system process (LOLBIN) to download a payload from a file-sharing host.
 ⭕️ Objective: Identify which HR user ran a system binary to fetch a payload.
+
 ⭕️ Method:
 
 spl
@@ -71,8 +81,11 @@ Edit
 index=win_eventlogs CommandLine="*http*"
 Cross-reference Account_Name with HR users. Investigate who ran processes like bitsadmin.exe.
 
-✏️ Task 5: Name the LOLBIN Used
+🔱 Answer: haroon
+
+✏️ Task 5: To bypass the security controls, which system process (lolbin) was used to download a payload from the internet?
 ⭕️ Objective: Name the system binary used to download the file.
+
 ⭕️ Method:
 
 From Task 4 results, extract the binary used in New_Process_Name or CommandLine.
@@ -85,16 +98,22 @@ certutil.exe
 
 powershell.exe
 
-✏️ Task 6: Date of Execution
+🔱 Answer: certutil.exe
+
+✏️ Task 6: What was the date that this binary was executed by the infected host? format (YYYY-MM-DD)
 ⭕️ Objective: Find the date the LOLBIN was executed.
+
 ⭕️ Method:
 
 Check _time field of the log entry from Task 5.
 
 Format the date as YYYY-MM-DD.
 
-✏️ Task 7: Identify the File-Sharing Site Used
+🔱 Answer: 2022-03-04
+
+✏️ Task 7: Which third-party site was accessed to download the malicious payload?
 ⭕️ Objective: Identify the third-party site used for hosting the payload.
+
 ⭕️ Method:
 
 spl
@@ -103,26 +122,37 @@ Edit
 index=win_eventlogs CommandLine="*http*"
 Inspect CommandLine or ParentCommandLine for domains such as transfer.sh, pastebin, anonfiles, etc.
 
-✏️ Task 8: Name of Downloaded File
+🔱 Answer: controlc.com
+
+✏️ Task 8: What is the name of the file that was saved on the host machine from the C2 server during the post-exploitation phase?
 ⭕️ Objective: Extract the name of the file saved to disk.
+
 ⭕️ Method:
 
 Look in the CommandLine for bitsadmin or certutil download commands.
 Identify the file name after output, outfile, or at the end of the command.
 
-✏️ Task 9: Extract Flag Pattern from Payload
+🔱 Answer: benign.exe
+
+✏️ Task 9: The suspicious file downloaded from the C2 server contained malicious content with the pattern THM{..........}; what is that pattern?
 ⭕️ Objective: Reveal the malicious content pattern (e.g., THM{...}) in the downloaded file.
+
 ⭕️ Method:
 
 Inspect the file contents (e.g., with type, cat, strings, or external analysis).
 Look for string pattern: THM{.*}
 
-✏️ Task 10: Reveal Full Malicious URL
+🔱 Answer: THM{KJ&*H^B0}
+
+✏️ Task 10: What is the URL that the infected host connected to?
 ⭕️ Objective: Identify the complete URL used to retrieve the malicious payload.
+
 ⭕️ Method:
 
 Backtrack to the LOLBIN execution event from Task 5.
 Extract full URL from the CommandLine field.
+
+🔱 Answer: https://controlc.com/e4d11035
 
 🔍 Analysis and Reflection
 
