@@ -44,6 +44,12 @@ index=win_eventlogs EventCode=4688 | stats count
 
 🔱 Answer: 13959
 
+📸 Screenshot: 
+
+![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T1-1.png)   
+
+![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T1-2.png)   
+
 ✏️ Task 2: Imposter Alert: There seems to be an imposter account observed in the logs, what is the name of that user?
 ⭕️ Objective: Detect the suspicious or unknown user account created by the attacker.
 
@@ -56,6 +62,10 @@ index=win_eventlogs EventCode=4688 | stats count by Account_Name
 Compare usernames against known users in each department (HR: Haroon, Chris, Diana). Identify anomalies.
 
 🔱 Answer: Amel1a
+
+📸 Screenshot: 
+
+![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T2-1.png)   
 
 ✏️ Task 3: Which user from the HR department was observed to be running scheduled tasks?
 ⭕️ Objective: Determine which HR user executed schtasks.exe.
@@ -70,6 +80,14 @@ Filter for HR usernames (Haroon, Chris, Diana). Look at Account_Name field in th
 
 🔱 Answer: Chris.fort
 
+📸 Screenshot: 
+
+![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T3-1.png)   
+
+![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T3-2.png)   
+
+![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T3-3.png)   
+
 ✏️ Task 4: Which user from the HR department executed a system process (LOLBIN) to download a payload from a file-sharing host.
 ⭕️ Objective: Identify which HR user ran a system binary to fetch a payload.
 
@@ -82,6 +100,10 @@ index=win_eventlogs CommandLine="*http*"
 Cross-reference Account_Name with HR users. Investigate who ran processes like bitsadmin.exe.
 
 🔱 Answer: haroon
+
+📸 Screenshot: 
+
+![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T4-1.png)   
 
 ✏️ Task 5: To bypass the security controls, which system process (lolbin) was used to download a payload from the internet?
 ⭕️ Objective: Name the system binary used to download the file.
@@ -100,6 +122,10 @@ powershell.exe
 
 🔱 Answer: certutil.exe
 
+📸 Screenshot: 
+
+![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T5-1.png)   
+
 ✏️ Task 6: What was the date that this binary was executed by the infected host? format (YYYY-MM-DD)
 ⭕️ Objective: Find the date the LOLBIN was executed.
 
@@ -110,6 +136,10 @@ Check _time field of the log entry from Task 5.
 Format the date as YYYY-MM-DD.
 
 🔱 Answer: 2022-03-04
+
+📸 Screenshot: 
+
+![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T6-1.png)   
 
 ✏️ Task 7: Which third-party site was accessed to download the malicious payload?
 ⭕️ Objective: Identify the third-party site used for hosting the payload.
@@ -124,6 +154,10 @@ Inspect CommandLine or ParentCommandLine for domains such as transfer.sh, pasteb
 
 🔱 Answer: controlc.com
 
+📸 Screenshot: 
+
+![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T7-1.png)   
+
 ✏️ Task 8: What is the name of the file that was saved on the host machine from the C2 server during the post-exploitation phase?
 ⭕️ Objective: Extract the name of the file saved to disk.
 
@@ -133,6 +167,10 @@ Look in the CommandLine for bitsadmin or certutil download commands.
 Identify the file name after output, outfile, or at the end of the command.
 
 🔱 Answer: benign.exe
+
+📸 Screenshot: 
+
+![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T8-1.png)   
 
 ✏️ Task 9: The suspicious file downloaded from the C2 server contained malicious content with the pattern THM{..........}; what is that pattern?
 ⭕️ Objective: Reveal the malicious content pattern (e.g., THM{...}) in the downloaded file.
@@ -144,6 +182,12 @@ Look for string pattern: THM{.*}
 
 🔱 Answer: THM{KJ&*H^B0}
 
+📸 Screenshot: 
+
+![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T9-1.png)   
+
+![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T9-2.png)   
+
 ✏️ Task 10: What is the URL that the infected host connected to?
 ⭕️ Objective: Identify the complete URL used to retrieve the malicious payload.
 
@@ -153,6 +197,10 @@ Backtrack to the LOLBIN execution event from Task 5.
 Extract full URL from the CommandLine field.
 
 🔱 Answer: https://controlc.com/e4d11035
+
+📸 Screenshot: 
+
+![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T10-1.png)  
 
 🔍 Analysis and Reflection
 
@@ -210,34 +258,6 @@ Configure Splunk alerts for LOLBINs used with external URLs
 Correlate Event IDs 4688 with file modification logs (Event ID 4663)
 
 Simulate similar attacks in a lab environment to build detection playbooks
-
-![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T1-1.png)   
-
-![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T1-2.png)   
-
-![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T2-1.png)   
-
-![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T3-1.png)   
-
-![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T3-2.png)   
-
-![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T3-3.png)   
-
-![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T4-1.png)   
-
-![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T5-1.png)   
-
-![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T6-1.png)   
-
-![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T7-1.png)   
-
-![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T8-1.png)   
-
-![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T9-1.png)   
-
-![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T9-2.png)   
-
-![image alt](https://github.com/andre5Jr/soc-analyst-SIEM-BENIGN/blob/043c486c7dbff66b940da6aac6d5b465d77f9397/T10-1.png)  
 
 
 
